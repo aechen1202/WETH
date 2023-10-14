@@ -1,66 +1,38 @@
-## Foundry
-
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
-
-Foundry consists of:
-
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
-
-## Documentation
-
-https://book.getfoundry.sh/
-
-## Usage
-
-### Build
-
-```shell
+1. 建置專案
 $ forge build
-```
 
-### Test
+2.單元測試專案
+因為我下了很多log查看紀錄
+forge test --v
 
-```shell
-$ forge test
-```
+3.預期結果
+Running 3 tests for test/WETH.t.sol:WETHTest
+[PASS] test_Deposit() (gas: 62151)
+Logs:
+  get weth balance from user1 after deposit
+  1000000000000000000
+  get eth balance from contract after deposit
+  1000000000000000000
 
-### Format
+[PASS] test_Erc20() (gas: 117931)
+Logs:
+  get weth balance from user1 after transfer
+  0
+  get weth balance from user2 after transfer
+  1000000000000000000
+  get weth allowance from user1 to user2 after approve
+  1000000000000000000
+  changePrank is deprecated. Please use vm.startPrank instead.
+  get weth allowance from user1 to user2 after transferFrom
+  0
 
-```shell
-$ forge fmt
-```
+[PASS] test_withdraw() (gas: 119087)
+Logs:
+  get weth balance from user1 before withdraw
+  1000000000000000000
+  get weth balance from user1 after withdraw
+  0
 
-### Gas Snapshots
+Test result: ok. 3 passed; 0 failed; 0 skipped; finished in 52.07ms
 
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+Ran 1 test suites: 3 tests passed, 0 failed, 0 skipped (3 total tests)
