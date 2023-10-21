@@ -1,11 +1,14 @@
-1.建置專案  
-$ forge build
+1.CLONE專案  
+git clone https://github.com/aechen1202/WETH.git
 
-2.單元測試專案  
+2.CD道專案資料夾
+cd WETH
+
+3.單元測試專案  
 因為我下了很多log查看紀錄  
 forge test --v  
   
-3.預期結果  
+4.預期結果  
 Running 3 tests for test/WETH.t.sol:WETHTest  
 [PASS] test_Deposit() (gas: 62151)  
 Logs:  
