@@ -67,7 +67,7 @@ contract WETHTest is Test {
         //測項 6: withdraw 應該要 emit Withdraw event
         deal(user1, 1 ether);
         Weth.deposit{value: 1 ether}();
-        vm.expectEmit(true,false,false,false,address(Weth));
+        vm.expectEmit(false,false,false,false,address(Weth));
         emit Withdrawal(user1, 1 ether);
         Weth.withdraw(1 ether);
         
@@ -111,6 +111,14 @@ contract WETHTest is Test {
         
         
     }
+
+    function test_withdraw_fail() public {
+     vm.startPrank(user1);
+     deal(user1, 1 ether);
+     Weth.deposit{value: 1 ether}();
+     vm.expectRevert();
+     Weth.withdraw(2 ether);
+  }
 
     
 }
